@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+import GlobalStyle from "./base/globalStyles";
+import { Home, CountryDetails } from "./pages";
+import { AppRoute } from "./constants";
+import theme from "./base/themes";
+import { useTheme } from "./store";
+import { NavBar } from "./components";
 
 function App() {
+  const { mode } = useTheme();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle mode={mode} />
+      <NavBar />
+      <Routes>
+        <Route path={AppRoute.home} element={<Home />} />
+        <Route
+          path={`${AppRoute.details}/:name`}
+          element={<CountryDetails />}
+        />
+      </Routes>
+    </ThemeProvider>
   );
 }
 
