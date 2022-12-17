@@ -3,11 +3,14 @@ import useAsync from "../../hooks/useAsync";
 import usePaginate from "../../hooks/usePaginate";
 import Container from "../../components/Utilities/Container/Container.styles";
 import { FilterSearch, Countries, Loading, Pagination } from "../../components";
+import { useTheme } from "../../store";
 import Main from "./styles";
 
 const url = "https://restcountries.com/v3.1";
 const Home = () => {
   const [region, setRegion] = useState("all");
+
+  const { mode } = useTheme();
 
   const pageRef = useRef<HTMLDivElement>(null);
 
@@ -15,7 +18,8 @@ const Home = () => {
     pageRef.current!.scrollIntoView({ behavior: "smooth" });
   };
 
-  const { isLoading, isError, countries, fetchCountries } = useAsync();
+  const { isLoading, isError, countries, fetchCountries, errorMessage } =
+    useAsync();
 
   const {
     currentPage,
@@ -48,9 +52,9 @@ const Home = () => {
     fetchCountries(url);
   }, [fetchCountries]);
 
-  // const reload = () => {
-  //   window.location.reload();
-  // };
+  const reload = () => {
+    window.location.reload();
+  };
 
   // console.log(countries);
 
@@ -72,14 +76,20 @@ const Home = () => {
   );
 
   return (
-    <Main>
+    <Main mode={mode}>
       <Container>
         <FilterSearch onFilter={handleFilter} onSearch={handleSearch} />
         {isLoading && <Loading />}
-        {/* {!isLoading && isError && (
+        {!isLoading && isError && (
           <h2 className="error-message">{errorMessage}</h2>
         )}
-        {!isLoading && isError && <button onClick={reload}>Reload</button>} */}
+        {!isLoading && isError && (
+          <div className="reload-container">
+            <button className="reload-btn" onClick={reload}>
+              Reload
+            </button>
+          </div>
+        )}
         {!isLoading && !isError && filtered.length === 0 && (
           <h2 className="error-message">
             Ooops!! Country can't be found in this region. Please select "All"

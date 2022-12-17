@@ -1,7 +1,48 @@
 import styled from "styled-components";
+import { Theme } from "../../base/themes";
 
-const Main = styled.main`
+const Main = styled.main<{ theme: Theme; mode: string }>`
   margin-top: 5rem;
+
+  .reload-container {
+    text-align: center;
+
+    .reload-btn {
+      padding: 10px 20px;
+      color: ${({ theme, mode }) =>
+        mode === "dark" ? theme.light.text : theme.dark.text};
+      background-color: ${({ theme, mode }) =>
+        mode === "dark" ? theme.light.elements : theme.dark.elements};
+      font-size: 16px;
+      font-weight: 600;
+      font-style: italic;
+      border: none;
+      outline: none;
+      font-family: var(--nunito-sans);
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.08),
+        -3px -3px 3px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  .reload {
+    padding: 10px 20px;
+    color: ${({ theme, mode }) =>
+      mode === "dark" ? theme.light.text : theme.dark.text};
+    background-color: ${({ theme, mode }) =>
+      mode === "dark" ? theme.light.elements : theme.dark.elements};
+    font-size: 16px;
+    font-weight: 600;
+    font-style: italic;
+    border: none;
+    outline: none;
+    font-family: var(--nunito-sans);
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.08),
+      -3px -3px 3px rgba(0, 0, 0, 0.08);
+  }
 
   .error-message {
     max-width: 600px;
