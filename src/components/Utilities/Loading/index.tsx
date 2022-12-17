@@ -1,10 +1,11 @@
 import React from "react";
 import Container from "../Container/Container.styles";
 import Section from "./styles";
-
+import { useTheme } from "../../../store";
 const Loading = () => {
+  const { mode } = useTheme();
   return (
-    <Section>
+    <Section mode={mode}>
       <Container>
         <div className="lds__center">
           <div className="lds-ring">

@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { Theme } from "../../../base/themes";
 
-const Section = styled.section`
+const Section = styled.section<{ mode: string; theme: Theme }>`
   .lds__center {
     display: flex;
     justify-content: center;
@@ -20,10 +21,14 @@ const Section = styled.section`
     width: 64px;
     height: 64px;
     margin: 8px;
-    border: 8px solid var(--dark-mode-text);
+    border: 8px solid
+      ${({ mode, theme }) =>
+        mode === "dark" ? theme.dark.text : theme.light.text};
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: var(--dark-mode-text) transparent transparent transparent;
+    border-color: ${({ mode, theme }) =>
+        mode === "dark" ? theme.dark.text : theme.light.text}
+      transparent transparent transparent;
   }
 
   .light .lds-ring div {
