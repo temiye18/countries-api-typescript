@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Card from "./styles";
+
 import { AppRoute } from "../../constants";
 import { useTheme } from "../../store";
+import Card from "./styles";
+import "aos/dist/aos.css";
 
 interface Country {
   name: { common: string };
@@ -21,7 +23,7 @@ const Countries: React.FC<Country> = ({
 }) => {
   const { mode } = useTheme();
   return (
-    <Card mode={mode}>
+    <Card mode={mode} data-aos="fade-up" data-aos-duration="1000">
       <div className="country-card">
         <img src={png} alt="flag_img" />
 

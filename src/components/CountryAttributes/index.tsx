@@ -43,7 +43,11 @@ const CountryAttributes: React.FC<Props> = ({ countries }) => {
     ));
 
   return (
-    <AttributesContainer mode={mode}>
+    <AttributesContainer
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      mode={mode}
+    >
       <div className="country-flag">
         <img src={flags.png} alt="flag-img" />
       </div>
