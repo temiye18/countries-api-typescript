@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { AppRoute } from "../../constants";
 import { useTheme } from "../../store";
+// import useAnimate from "../../hooks/useAnimate";
 import Card from "./styles";
 import "aos/dist/aos.css";
 
@@ -21,9 +22,11 @@ const Countries: React.FC<Country> = ({
   population,
   flags: { png },
 }) => {
+  // useAnimate();
+
   const { mode } = useTheme();
   return (
-    <Card mode={mode} data-aos="fade-up" data-aos-duration="1000">
+    <Card mode={mode}>
       <div className="country-card">
         <img src={png} alt="flag_img" />
 

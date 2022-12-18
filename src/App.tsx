@@ -8,10 +8,7 @@ import theme from "./base/themes";
 import { useTheme } from "./store";
 import { NavBar } from "./components";
 
-import useAnimate from "./hooks/useAnimate";
-
 function App() {
-  useAnimate();
   const { mode } = useTheme();
   return (
     <ThemeProvider theme={theme}>

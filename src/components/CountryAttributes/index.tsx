@@ -30,7 +30,6 @@ const CountryAttributes: React.FC<Props> = ({ countries }) => {
   const countryLanguages = language.map((item: any, index: number) => (
     <span key={index}>{item}, </span>
   ));
-  // console.log(countryLanguages);
 
   const borderCountry =
     borders &&
@@ -42,12 +41,11 @@ const CountryAttributes: React.FC<Props> = ({ countries }) => {
       </span>
     ));
 
+  // data-aos="fade-up"
+  //   data-aos-duration="1000"
+
   return (
-    <AttributesContainer
-      data-aos="fade-up"
-      data-aos-duration="1000"
-      mode={mode}
-    >
+    <AttributesContainer mode={mode}>
       <div className="country-flag">
         <img src={flags.png} alt="flag-img" />
       </div>
