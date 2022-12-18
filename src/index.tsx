@@ -9,9 +9,11 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <ThemeContextProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </ThemeContextProvider>
+  <React.StrictMode>
+    <ThemeContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ThemeContextProvider>
+  </React.StrictMode>
 );
