@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Theme } from "../../base/themes";
 
 const Main = styled.main<{ theme: Theme; mode: string }>`
-  margin-top: 5rem;
+  margin-top: 8rem;
 
   .reload-container {
     text-align: center;
